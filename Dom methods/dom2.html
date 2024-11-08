@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<h2>1 dsafwef</h2>
+<h2>2 sfdsfsd</h2>
+<button onclick="changeheading()">Change Heading</button>
+<script>
+  function changeheading(){
+    var head=document.getElementsByTagName("h2");
+    for(i=0; i<head.length ; i++)
+    {
+        head[i].textContent="cccccchange heading";
+    }
+  }
+</script>
+</body>
+</html>

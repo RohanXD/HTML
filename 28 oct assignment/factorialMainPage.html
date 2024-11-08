@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Factorial</h1>
+    <input type="text" id="myNum" placeholder="Enter a Number" /><button
+      onclick="reset()"
+    >
+      Reset</button
+    ><br /><br />
+    <form>
+      <input type="radio" name="option" value="1" id="option1" />
+      <label for="option1">Without Function</label>
+      <input type="radio" name="option" value="2" id="option2" />
+      <label for="option2">With Function</label>
+    </form>
+    <h2>Output</h2>
+    <p id="myOutput"></p>
+
+    <script>
+      function reset() {
+        location.reload();
+      }
+
+      document.querySelectorAll('input[name="option"]').forEach((elem) => {
+        elem.addEventListener("change", function (event) {
+          let selectedValue = event.target.value;
+          runSpecificCode(selectedValue);
+        });
+      });
+      function runSpecificCode(value) {
+        if (value == 1) {
+          let number = parseInt(document.getElementById("myNum").value);
+
+          let factorial = 1;
+
+          for (let i = 1; i <= number; i++) {
+            factorial *= i;
+          }
+          document.getElementById("myOutput").innerText =
+            "The factorial of " + number + " is " + factorial;
+        } else {
+          function factorial(n) {
+            let result = 1;
+            for (let i = 1; i <= n; i++) {
+              result *= i;
+            }
+            return result;
+          }
+
+          let number = parseInt(document.getElementById("myNum").value);
+          let fact = factorial(number);
+          document.getElementById("myOutput").innerText =
+            "The factorial of " + number + " is " + fact;
+        }
+      }
+    </script>
+  </body>
+</html>

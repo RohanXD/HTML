@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Using If else statement</h1>
+    <h4>You can Vote or Not</h4>
+    <label>Age</label>
+    <input type="text" placeholder="Enter your age" id="age" />
+    <button onclick="calc()">Calculate</button>
+    <button onclick="reset()">Reset</button>
+
+    <h2>Output</h2>
+    <p id="myOutput"></p>
+
+    <h4>Using If else if statement</h4>
+    <p>Check your Grades according to your performace</p>
+    <label>Your Score</label>
+    <input type="text" placeholder="Enter your marks" id="score" />
+    <button onclick="score()">Calculate</button>
+    <button onclick="reset()">Reset</button>
+    <h2>Output</h2>
+    <p id="myOutput2"></p>
+    <script>
+      function reset() {
+        location.reload();
+      }
+      function calc() {
+        let age = parseInt(document.getElementById("age").value);
+        if (age >= 18) {
+          document.getElementById("myOutput").innerText =
+            "You are eligble to VOTE";
+        } else {
+          document.getElementById("myOutput").innerText =
+            "Sorry, you are not eligble to VOTE";
+        }
+      }
+      function score() {
+        let score = parseInt(document.getElementById("score").value);
+        if (score >= 90) {
+          document.getElementById("myOutput2").innerHTML = "Grade: A";
+        } else if (score >= 80) {
+          document.getElementById("myOutput2").innerHTML = "Grade: B";
+        } else if (score >= 70) {
+          document.getElementById("myOutput2").innerHTML = "Grade: C";
+        } else if (score >= 60) {
+          document.getElementById("myOutput2").innerHTML = "Grade: D";
+        } else {
+          document.getElementById("myOutput2").innerHTML = "Grade: Fail";
+        }
+      }
+    </script>
+  </body>
+</html>

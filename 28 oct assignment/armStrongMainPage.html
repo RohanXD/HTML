@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Armstrong Number</title>
+  </head>
+  <body>
+    <h1>Armstrong Number</h1>
+    <input type="text" placeholder="Enter a Number" id="myNum" /><button
+      onclick="reset()"
+    >
+      Reset</button
+    ><br /><br />
+    <form>
+      <input type="radio" id="option1" name="option" value="1" />
+      <label for="option1">Without Using Function</label>
+      <input type="radio" id="option2" name="option" value="2" />
+      <label for="option2">Using Function</label>
+    </form>
+    <h2>Output</h2>
+    <p id="myOutput"></p>
+    <script>
+      function reset() {
+        console.log("Clicked");
+        location.reload();
+      }
+
+      document.querySelectorAll('input[name="option"]').forEach((elem) => {
+        elem.addEventListener("change", function (event) {
+          let selectedValue = event.target.value;
+          runSpecificCode(selectedValue);
+        });
+      });
+        function runSpecificCode(value) {
+        if (value == 1) {
+          const number = parseInt(document.getElementById("myNum").value);
+          let numStr = number.toString();
+          let numDigits = numStr.length;
+          let sum = 0;
+
+          for (let i = 0; i < numDigits; i++) {
+            sum += Math.pow(parseInt(numStr[i]), numDigits);
+          }
+
+          if (sum === number) {
+            document.getElementById("myOutput").innerText =
+              number + " is an Armstrong number";
+          } else {
+            document.getElementById("myOutput").innerText =
+              number + " is not an Armstrong number";
+          }
+        } else {
+          function isArmstrongNumber(number) {
+            let numStr = number.toString();
+            let numDigits = numStr.length;
+            let sum = 0;
+
+            for (let i = 0; i < numDigits; i++) {
+              sum += Math.pow(parseInt(numStr[i]), numDigits);
+            }
+
+            return sum === number;
+          }
+
+          const number = parseInt(document.getElementById("myNum").value);
+          if (isArmstrongNumber(number)) {
+            document.getElementById("myOutput").innerText =
+              number + " is an Armstrong number";
+          } else {
+            document.getElementById("myOutput").innerText =
+              number + " is not an Armstrong number";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

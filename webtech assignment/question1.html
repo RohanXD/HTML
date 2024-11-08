@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .window {
+            width: 80%;
+            max-width: 800px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .title-bar {
+            background-color: #0078d7;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .menu-bar {
+            background-color: #f1f1f1;
+            padding: 5px;
+            display: flex;
+            justify-content: space-around;
+            cursor: pointer;
+        }
+        .ruler {
+            background-color: #e0e0e0;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            height: 300px;
+        }
+        .status-bar {
+            background-color: #f1f1f1;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function showInfo(element) {
+            let info = '';
+            switch(element) {
+                case 'title-bar':
+                    info = 'This is the title bar. It displays the title of the document.';
+                    break;
+                case 'menu-bar':
+                    info = 'This is the menu bar. It contains various menu options like File, Edit, View, etc.';
+                    break;
+                case 'ruler':
+                    info = 'This is the ruler. It helps in measuring the layout of the document.';
+                    break;
+                case 'status-bar':
+                    info = 'This is the status bar. It shows helpful information like NUM lock status.';
+                    break;
+            }
+            alert(info);
+        }
+    </script>
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar" onclick="showInfo('title-bar')">Document - WordPad</div>
+        <div class="menu-bar" onclick="showInfo('menu-bar')">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Insert</span>
+            <span>Format</span>
+            <span>Help</span>
+        </div>
+        <div class="ruler" onclick="showInfo('ruler')">1 2 3 4 5</div>
+        <div class="content"></div>
+        <div class="status-bar" onclick="showInfo('status-bar')">
+            <span>For Help, press F1</span>
+            <span>NUM</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Number</title>
+  </head>
+  <body>
+    <h1>Prime Number</h1>
+    <input type="text" id="myNum" placeholder="Enter a Number" /><button
+      onclick="reset()"
+    >
+      Reset</button
+    ><br /><br />
+    <form>
+      <input type="radio" name="option" value="1" id="option1" />
+      <label for="option1">Without Function</label>
+      <input type="radio" name="option" value="2" id="option2" />
+      <label for="option2">With Function</label>
+    </form>
+    <h2>Output</h2>
+    <p id="myOutput"></p>
+
+    <script>
+      function reset() {
+        location.reload();
+      }
+
+      document.querySelectorAll('input[name="option"]').forEach((elem) => {
+        elem.addEventListener("change", function (event) {
+          let selectedValue = event.target.value;
+          runSpecificCode(selectedValue);
+        });
+      });
+      function runSpecificCode(value) {
+        if (value == 1) {
+          let number = parseInt(document.getElementById("myNum").value);
+          let isPrime = true;
+
+          if (number <= 1) {
+            isPrime = false; // Numbers less than or equal to 1 are not prime
+          } else {
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+              if (number % i === 0) {
+                isPrime = false; // If divisible by any number other than 1 and itself
+                break;
+              }
+            }
+          }
+
+          if (isPrime) {
+            document.getElementById("myOutput").innerText =
+              number + " is an Prime number";
+          } else {
+            document.getElementById("myOutput").innerText =
+              number + " is not an Prime number";
+          }
+        } else {
+          function isPrime(num) {
+            if (num <= 1) {
+              return false;
+            }
+
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+              if (num % i === 0) {
+                return false;
+              }
+            }
+
+            return true;
+          }
+
+          let number = parseInt(document.getElementById("myNum").value);
+          if (isPrime(number)) {
+            document.getElementById("myOutput").innerText =
+              number + " is an Prime number";
+          } else {
+            document.getElementById("myOutput").innerText =
+              number + " is not an Prime number";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

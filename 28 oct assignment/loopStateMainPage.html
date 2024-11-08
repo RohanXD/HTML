@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Looping Statements</h1>
+    <table>
+      <tr>
+        <th>Low</th>
+        <th>Max</th>
+        <th>Choose</th>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="text"
+            placeholder="Enter lowest value"
+            id="value1"
+            value="1"
+            style="text-align: center;"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            placeholder="Enter max value"
+            id="value2"
+            style="text-align: center;"
+          />
+        </td>
+        <td>
+          <select id="opeations">
+            <option value="natural">Natural Numbers</option>
+            <option value="even">Even Numbers</option>
+            <option value="odd">Odd Numbers</option>
+            <option value="prime">Prime Numbers</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button onclick="calc()" style="width: 100%">Calculate</button></td>
+        <td><button onclick="reset()" style="width: 100%">Reset</button></td>
+      </tr>
+    </table>
+    <h2>Output</h2>
+    <p id="myOutput"></p>
+
+    <script>
+      function reset() {
+        location.reload();
+      }
+      function calc() {
+        const low = parseInt(document.getElementById("value1").value);
+        const max = parseInt(document.getElementById("value2").value);
+        const opt = document.getElementById("opeations").value;
+
+        switch (opt) {
+          case "natural":
+            for (i = low; i <= max; i++) {
+              let data = document.createElement("p");
+              data.innerText = i;
+              document.getElementById("myOutput").appendChild(data);
+            }
+            break;
+          case "even":
+            for (i = low; i <= max; i++) {
+              if (i % 2 == 0) {
+                let data = document.createElement("p");
+                data.innerText = i;
+                document.getElementById("myOutput").appendChild(data);
+              }
+            }
+            break;
+          case "odd":
+            for (i = low; i <= max; i++) {
+              if (i % 2 != 0) {
+                let data = document.createElement("p");
+                data.innerText = i;
+                document.getElementById("myOutput").appendChild(data);
+              }
+            }
+            break;
+          case "prime":
+            function isPrime(num) {
+              if (num <= 1) {
+                return false;
+              } else {
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                  if (num % i === 0) {
+                    return false;
+                  }
+                }
+                return true;
+              }
+            }
+            for (let i = low; i <= max; i++) {
+              if (isPrime(i)) {
+                let data = document.createElement("p");
+                data.innerText = i;
+                document.getElementById("myOutput").appendChild(data);
+              }
+            }
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

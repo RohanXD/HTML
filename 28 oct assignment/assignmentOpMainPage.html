@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Assignment Operators</h1>
+    <table>
+      <tr>
+        <th>Operand 1</th>
+        <th>Operand 2</th>
+        <th>Operator</th>
+      </tr>
+      <tr>
+        <th><input type="text" placeholder="Enter a value" id="value1" style="text-align: center;" /></th>
+        <th><input type="text" placeholder="Enter a value" id="value2" style="text-align: center;" /></th>
+        <th>
+          <select id="operator">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+          </select>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="3"><button onclick="getValues()" style="width: 100%;">Click</button></th>
+      </tr>
+    </table>
+    <h2>Output</h2>
+    <p id="myOutput"></p>
+
+    <script>
+      function getValues() {
+        num1 = parseInt(document.getElementById("value1").value);
+        num2 = parseInt(document.getElementById("value2").value);
+        operator = document.getElementById("operator").value;
+
+        switch (operator) {
+          case "add":
+            result = num1 + num2;
+            break;
+          case "subtract":
+            result = num1 - num2;
+            break;
+          case "multiply":
+            result = num1 * num2;
+            break;
+          case "divide":
+            if (num2 == 0) {
+              result = "Error";
+            } else {
+              result = num1 / num2;
+            }
+            break;
+        }
+        document.getElementById("myOutput").innerText = "Result is " + result;
+      }
+    </script>
+  </body>
+</html>
