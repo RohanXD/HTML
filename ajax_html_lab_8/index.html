@@ -9,7 +9,7 @@
             
             var request = new XMLHttpRequest();
 
-            request.open("GET","about.html")
+            request.open("GET","domtag.html")
 
             request.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status==200){
@@ -26,8 +26,9 @@
 <body>
 <h1>index.html</h1>
 <p>Ajax</p>
-<a href="about.html">About</a><br>
+<a href="domtag.html">About</a><br>
 <button onclick="load()">Load About</button><br>
+<button onclick="image()">Show Image </button>
 <div id="babu"></div><!--Changed 'Class' to id-->
 </body>
 </html>
