@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Reversal</title>
+</head>
+<body>
+    <h2>Reverse a String</h2>
+    <form id="reverseForm">
+        <label >Enter a string:</label>
+        <input type="text" id="inputString" required>
+        <button type="submit">Reverse</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function reverseStringInPlace(str) {
+            let arr = str.split('');
+            let left = 0, right = arr.length - 1;
+            while (left < right) {
+                const temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+            return arr.join('');
+        }
+        document.getElementById('reverseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let inputString = document.getElementById('inputString').value;
+            const reversedString = reverseStringInPlace(inputString);
+            document.getElementById('result').textContent = 
+                `Reversed string: ${reversedString}`;
+        });
+    </script>
+</body>
+</html>

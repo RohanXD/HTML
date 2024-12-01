@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Online Examination System - Login</h2>
+    <form id="loginForm">
+        <label for="candidateID">Candidate ID:</label>
+        <input type="number" id="candidateID" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+    <p id="loginMessage"></p>
+    <p>Don't have an account? <a href="question8part1.html">Register here</a></p>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const candidateID = document.getElementById('candidateID').value;
+            const password = document.getElementById('password').value;
+            const storedCandidateID = localStorage.getItem('candidateID');
+            const storedPassword = localStorage.getItem('password');
+            const storedName = localStorage.getItem('name');
+            if (candidateID == storedCandidateID && password == storedPassword) {
+                document.getElementById('loginMessage').innerHTML = `Login successful! Welcome, ${storedName}. You can now register for an exam.`;
+            } else {
+                document.getElementById('loginMessage').innerHTML = "Invalid Candidate ID or Password.";
+            }
+        });
+    </script>
+</body>
+</html>

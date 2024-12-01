@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+    <h2>Student Grade Calculator</h2>
+    <form id="gradeForm">
+        <label for="subject1">Enter marks for Subject 1:</label>
+        <input type="number" id="subject1" name="subject1" min="0" max="100" required><br><br>
+
+        <label for="subject2">Enter marks for Subject 2:</label>
+        <input type="number" id="subject2" name="subject2" min="0" max="100" required><br><br>
+
+        <label for="subject3">Enter marks for Subject 3:</label>
+        <input type="number" id="subject3" name="subject3" min="0" max="100" required><br><br>
+
+        <label for="subject4">Enter marks for Subject 4:</label>
+        <input type="number" id="subject4" name="subject4" min="0" max="100" required><br><br>
+
+        <label for="subject5">Enter marks for Subject 5:</label>
+        <input type="number" id="subject5" name="subject5" min="0" max="100" required><br><br>
+
+        <button type="submit">Calculate Grade</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateAverage(marks) {
+            let total = 0;
+            for (let mark of marks) {
+                total += mark;
+            }
+            return total / marks.length;
+        }
+        function findGrade(average) {
+            if (average >= 90) {
+                return 'A';
+            } else if (average >= 80) {
+                return 'B';
+            } else if (average >= 70) {
+                return 'C';
+            } else if (average >= 60) {
+                return 'D';
+            } else {
+                return 'F';
+            }
+        }
+        document.getElementById('gradeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const marks = [
+                parseFloat(document.getElementById('subject1').value),
+                parseFloat(document.getElementById('subject2').value),
+                parseFloat(document.getElementById('subject3').value),
+                parseFloat(document.getElementById('subject4').value),
+                parseFloat(document.getElementById('subject5').value)
+            ];
+            const average = calculateAverage(marks);
+            const grade = findGrade(average);
+            document.getElementById('result').textContent = `Your grade is: ${grade}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+    <h2>Student Grade Calculator</h2>
+    <form id="gradeForm">
+        <label  >Student Name:</label>
+        <input type="text" id="studentName"required><br><br>
+
+        <label >Maths:</label>
+        <input type="number" min="0" max="100" required><br><br>
+
+        <label >Science:</label>
+        <input type="number" min="0" max="100" required><br><br>
+
+        <label >English:</label>
+        <input type="number" min="0" max="100" required><br><br>
+
+        <label >Language:</label>
+        <input type="number" min="0" max="100" required><br><br>
+
+        <label >Moral Science:</label>
+        <input type="number" min="0" max="100" required><br><br>
+
+        <button type="submit">Calculate Grade</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function calculateGrade(average) {
+            if (average >= 90) {
+                return 'O';
+            } else if (average >= 70) {
+                return 'A';
+            } else if (average >= 60) {
+                return 'B';
+            } else if (average >= 50) {
+                return 'C';
+            } else {
+                return 'F';
+            }
+        }
+        document.getElementById('gradeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const studentName = document.getElementById('studentName').value;
+            const marks = {
+                maths: parseFloat(document.getElementById('maths').value),
+                science: parseFloat(document.getElementById('science').value),
+                english: parseFloat(document.getElementById('english').value),
+                language: parseFloat(document.getElementById('language').value),
+                moralScience: parseFloat(document.getElementById('moralScience').value)
+            };
+            const total = marks.maths + marks.science + marks.english + marks.language + marks.moralScience;
+            const average = total / 5;
+            const grade = calculateGrade(average);
+            const resultText = `
+                Student Name: ${studentName}<br>
+                Subject Marks:<br>
+                Maths: ${marks.maths}<br>
+                Science: ${marks.science}<br>
+                English: ${marks.english}<br>
+                Language: ${marks.language}<br>
+                Moral Science: ${marks.moralScience}<br>
+                Total: ${total}<br>
+                Average: ${average.toFixed(2)}<br>
+                Grade: ${grade}
+            `;
+            document.getElementById('result').innerHTML = resultText;
+        });
+    </script>
+</body>
+</html>
